@@ -42,3 +42,8 @@ form input {
   border: 1px solid #e3e3e3;
   text-indent: 23px;
 }
+
+span {
+  font-size: 26px;
+  color: red;
+}

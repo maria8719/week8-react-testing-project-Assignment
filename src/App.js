@@ -24,7 +24,7 @@ function App() {
   ]);
 
   const addTodo = (text) => {
-    const newTodos = [...todos, { text }];
+    const newTodos = [...todos, { id: uuidv4(), text, isCompleted: false }];
     setTodos(newTodos);
   };
 
@@ -45,7 +45,10 @@ function App() {
   return (
     <div className="app">
       <div className="todo-list" role="list">
-        <h1 className="title">Todo App</h1>
+        <h1 className="title">Todo App - &nbsp;
+                              <span data-testid="todoCount">
+                                 {todos.length} {todos.length === 1 ? "todo" : "todos"}
+                              </span></h1>
         {todos.map((todo) => (
           <Todo
             key={todo.id}

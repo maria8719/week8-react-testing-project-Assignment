@@ -11,13 +11,13 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form aria-label="form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="input"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder=" Enter your task"
+        placeholder="Enter your task"
       />
     </form>
   );
