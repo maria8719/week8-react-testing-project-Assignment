@@ -9,10 +9,10 @@ function Todo({ todo, completeTodo, removeTodo }) {
       {todo.text}
 
       <div>
-        <button onClick={() => completeTodo(todo.id)}>
+        <button data-testid="Done-btn" onClick={() => completeTodo(todo.id)}>
           {todo.isCompleted ? "Not done" : "Done"}
         </button>
-        <button onClick={() => removeTodo(todo.id)}>x</button>
+        <button data-testid="Delete-btn" onClick={() => removeTodo(todo.id)}>x</button>
       </div>
     </div>
   );

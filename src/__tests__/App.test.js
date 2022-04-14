@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, getAllByTestId, getAllByRole } from '@testing-library/react';
 import App from '../App';
 
 // Jest hooks:
@@ -78,13 +78,43 @@ describe('Testing <Todo/> functionality', () => {
 
   test('a new todo is deleted', async () => {
 
-      // .. your code here
-  
-  });
+        // .. your code here
+               
+      const todos = render(<App />);
 
+      /* this is a way to test a new todo is deleted
+    
+      const deletebtn = screen.getAllByTestId("Delete-btn")[0];
+      const todoToBeDeleted = screen.getByText('React Hooks in Depth');      
+      
+       fireEvent.click(deletebtn);   
+       expect(todoToBeDeleted).not.toBeInTheDocument();
+       */
+
+    // this is another way to test delete a new todo
+
+      const  deletebutn = screen.getAllByRole("button", {name: /x/i});
+      const todoCountElement = todos.getByTestId('todoCount');
+      
+      expect(todoCountElement).toHaveTextContent('3 todos');
+      fireEvent.click(deletebutn[0]);
+      expect(todoCountElement).toHaveTextContent('2 todos');
+       
+      
+      }); 
+  
+ 
   test('a new todo is completed', async () => {
 
      // .. your code here
+
+     render(<App />);
+    
+      const completebtn = screen.getAllByRole("button", {name: /Done$/i});
+      const todoToBeCompleted = screen.getByText('React Hooks in Depth');      
+      
+       fireEvent.click(completebtn[0]);   
+       expect(todoToBeCompleted).toHaveStyle({textDecoration: 'line-through'});
   
   });
 

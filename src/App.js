@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="todo-list" role="list">
+      <div className="todo-list" role="list" data-testid="todo-item">
         <h1 className="title">Todo App - &nbsp;
                               <span data-testid="todoCount">
                                  {todos.length} {todos.length === 1 ? "todo" : "todos"}
